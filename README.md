@@ -5,9 +5,9 @@ DB Migrator supports YAML or OS Env config type.
 This tool will be used for the McEasy Platform service template.
 Make sure you have the same service configuration as the service template.
 ## How to use
-1. Build/Pull the DB Migrator image. ([Installation](#-installation))
-1. Run the image to the container. ([Setup](#-setup-service-template))
-1. Run the available DB Migrator operations from the container. ([Operations](#-operations))
+1. Build/Pull the DB Migrator image. ([Installation](#installation))
+1. Run the image to the container. ([Setup](#setup-service-template))
+1. Run the available DB Migrator operations from the container. ([Operations](#operations))
 ## Installation
 Make sure you have a Docker & Git installed on your machine.
 
