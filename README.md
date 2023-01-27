@@ -28,7 +28,7 @@ cd db-migrator
 
 Build the Docker image
 ```bash
-docker build -t db-migrator .
+docker build -t hub.mceasy.com/db-migrator:v1.0 .
 ```
 
     
