@@ -58,10 +58,10 @@ docker run --name db-migrator \
 docker exec db-migrator alembic revision --autogenerate -m "{custom message}"
 ```
 
-- Update the database
+- Upgrade the database
  
 ```bash
-docker exec db-migrator alembic update head
+docker exec db-migrator alembic upgrade head
 ```
 
 - Downgrade the database
