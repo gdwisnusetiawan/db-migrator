@@ -58,15 +58,15 @@ if config_env is not None:
 logging.info('Running migration using ' + config_recap_message + ' config')
 
 from logging.config import fileConfig
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import engine_from_config, pool
+from geoalchemy2.alembic_helpers import include_object, render_item
 from alembic import context
 
 # Init Alembic Config 
 config = context.config
 
 # Setup database url
-config.set_main_option("sqlalchemy.url", "postgresql://%s:%s@%s:%s/%s" % (
+config.set_main_option("sqlalchemy.url", "postgresql://%s:%s@%s:%s/%s?options=-csearch_path=public" % (
     db_user,
     db_password,
     db_host,
@@ -100,6 +100,8 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        include_object=include_object,
+        render_item=render_item,
     )
 
     with context.begin_transaction():
@@ -121,7 +123,9 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection, target_metadata=target_metadata,
+            include_object=include_object,
+            render_item=render_item,
         )
 
         with context.begin_transaction():
